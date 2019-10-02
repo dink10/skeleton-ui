@@ -1,0 +1,49 @@
+{
+  "name": "skeleton-ui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "react-router-dom": "^5.1.1",
+    "react-scripts": "3.1.2"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "lint": "./node_modules/.bin/eslint src",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@storybook/react": "^5.2.1",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "customize-cra": "^0.8.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.15.1",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "react-app-rewired": "^2.1.3"
+  }
+}
