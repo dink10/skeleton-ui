@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Button from 'gismart-ui/core/components/Button';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 function Home() {
@@ -14,6 +16,7 @@ function Home() {
         <li>
           <Link to="/topics">Topics</Link>
         </li>
+        <Button>A</Button>
       </ul>
     </div>
   );
@@ -26,6 +29,22 @@ function About() {
     </div>
   );
 }
+
+function Topic({ match }) {
+  return (
+    <div>
+      <h3>{match.params.topicId}</h3>
+    </div>
+  );
+}
+
+Topic.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      topicId: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
 
 function Topics({ match }) {
   return (
@@ -53,13 +72,12 @@ function Topics({ match }) {
   );
 }
 
-function Topic({ match }) {
-  return (
-    <div>
-      <h3>{match.params.topicId}</h3>
-    </div>
-  );
-}
+Topics.propTypes = {
+  match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default function App() {
   return (
