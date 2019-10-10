@@ -1,13 +1,15 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import { ConnectedRouter } from 'connected-react-router';
 import Button from 'gismart-ui/core/components/Button';
-import { BrowserRouter as Router } from 'react-router-dom';
+import history from '../history';
+
 
 export default function App() {
   return (
-    <Router>
+    <ConnectedRouter history={history}>
       <h1>SCELETON</h1>
       <Button> Test </Button>
-    </Router>
+    </ConnectedRouter>
   );
 }
