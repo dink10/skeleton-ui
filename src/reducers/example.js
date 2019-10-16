@@ -1,15 +1,15 @@
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 
 const initState = fromJS({
   module: 'Example',
   test: true,
-});
+})
 
 function exampleReducer(state = initState, action) {
   switch (action.type) {
     default:
-      return state;
+      return state
   }
 }
 
-export default exampleReducer;
+export default exampleReducer
