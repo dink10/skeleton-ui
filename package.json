@@ -6,7 +6,6 @@
     "connected-react-router": "6.5.2",
     "gismart-ui": "git+git@bitbucket.org:gismart/gismart-ui.git",
     "history": "4.10.1",
-    "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "react": "16.10.1",
     "react-dom": "16.10.1",
