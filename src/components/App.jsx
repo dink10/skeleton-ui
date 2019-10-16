@@ -1,7 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router'
-import Button from 'gismart-ui/core/components/Button'
+import { Button } from 'gismart-ui/core/components'
 import history from '../history'
 
 
