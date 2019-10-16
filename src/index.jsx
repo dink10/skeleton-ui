@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import store from './reducers/store';
 
 import 'gismart-ui/core/style.css';
-import App from './App';
+import App from './components/App';
 
 const render = () => {
   ReactDOM.render((
