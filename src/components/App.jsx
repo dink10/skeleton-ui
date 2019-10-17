@@ -2,8 +2,7 @@ import React from 'react'
 // import PropTypes from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router'
 import { Button } from 'gismart-ui/core/components'
-import history from '../history'
-
+import history from '/history'
 
 export default function App() {
   return (

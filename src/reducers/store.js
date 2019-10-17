@@ -4,7 +4,7 @@ import {
   createStore, applyMiddleware, compose, combineReducers,
 } from 'redux'
 
-import history from '../history'
+import history from '/history'
 import exampleReducer from './example'
 
 const reducers = combineReducers({
