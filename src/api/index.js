@@ -12,5 +12,5 @@ const servicesInstance = Object.entries(services).reduce((acc, [servName, Servic
 
 export default {
   services: servicesInstance,
-  customRequest: client.do,
+  doCustomRequest: client.doRequest,
 }

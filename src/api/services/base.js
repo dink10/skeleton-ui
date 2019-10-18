@@ -6,20 +6,20 @@ class BaseService {
   }
 
   create(payload) {
-    return this.client.do('POST', this.relativeURL, payload)
+    return this.client.doRequest('POST', this.relativeURL, payload)
   }
 
   get(id) {
-    return this.client.do('GET', `${this.relativeURL}/${id}`)
+    return this.client.doRequest('GET', `${this.relativeURL}/${id}`)
   }
 
   // TODO: add opportunity to use filters (query strings)
   list() {
-    return this.client.do('GET', this.relativeURL)
+    return this.client.doRequest('GET', this.relativeURL)
   }
 
   update(id, entity) {
-    return this.client.do('PUT', `${this.relativeURL}/${id}`, entity)
+    return this.client.doRequest('PUT', `${this.relativeURL}/${id}`, entity)
   }
 }
 

@@ -2,15 +2,15 @@ import BaseService from './base'
 
 class AuthService extends BaseService {
   login(code) {
-    return this.client.do('POST', 'auth/login', { code })
+    return this.client.doRequest('POST', 'auth/login', { code })
   }
 
   me() {
-    return this.client.do('GET', 'auth/me')
+    return this.client.doRequest('GET', 'auth/me')
   }
 
   logout() {
-    return this.client.do('POST', 'auth/logout')
+    return this.client.doRequest('POST', 'auth/logout')
   }
 }
 

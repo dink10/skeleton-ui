@@ -1,14 +1,32 @@
 import React from 'react'
 // import PropTypes from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router'
-import { Button } from 'gismart-ui/core/components'
+import { Switch, Route, Redirect } from 'react-router'
 import history from '/history'
 
-export default function App() {
+import { Login, NotFound } from './pages'
+import Secure from './Secure'
+
+function App() {
   return (
     <ConnectedRouter history={history}>
-      <h1>SCELETON</h1>
-      <Button> Test </Button>
+      <>
+        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route
+            path="/home"
+            render={() => (
+              <Secure>
+                <div>Hello home</div>
+              </Secure>
+            )}
+          />
+          <Route component={NotFound} />
+        </Switch>
+      </>
     </ConnectedRouter>
   )
 }
+
+export default App

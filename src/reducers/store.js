@@ -5,11 +5,11 @@ import {
 } from 'redux'
 
 import history from '/history'
-import exampleReducer from './example'
+import authReducer from './auth'
 
 const reducers = combineReducers({
   router: connectRouter(history),
-  example: exampleReducer,
+  auth: authReducer,
 })
 
 const middlewares = compose(

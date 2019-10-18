@@ -2,7 +2,7 @@ const Bundler = require('parcel-bundler')
 const express = require('express')
 const proxy = require('http-proxy-middleware')
 
-const API_URL = 'https://devops1-default-gismetrics.gismart.xyz'
+const API_URL = process.env.API
 const API_PREFIX = '/api'
 
 const app = express()

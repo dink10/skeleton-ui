@@ -8,7 +8,7 @@ class Client {
     }
   }
 
-  do = async (method, path, payload) => {
+  doRequest = async (method, path, payload) => {
     const url = `${this.baseUrl}/${path}`
     const headers = { ...this.baseHeaders }
     const reqData = {
