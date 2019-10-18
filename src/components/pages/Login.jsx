@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button } from 'gismart-ui/core/components'
 import { loginAction } from '/actions/auth'
-import { LoginWrapper } from './style'
+import { PageWrapper } from './style'
 
 function Login({ login }) {
   return (
-    <LoginWrapper>
-      <Button onClick={login}>Login</Button>
-    </LoginWrapper>
+    <PageWrapper>
+      <Button size="large" onClick={login}>Login</Button>
+    </PageWrapper>
   )
 }
 

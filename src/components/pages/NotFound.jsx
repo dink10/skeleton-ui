@@ -1,13 +1,13 @@
 import React from 'react'
 import { goTo } from '/history'
 import { Button } from 'gismart-ui/core/components'
-import { NotFoundWrapper } from './style'
+import { PageWrapper } from './style'
 
 export default function NotFound() {
   return (
-    <NotFoundWrapper>
+    <PageWrapper>
       <h1>Page not found</h1>
-      <Button icon="home" onClick={() => goTo('/')}>Home</Button>
-    </NotFoundWrapper>
+      <Button size="large" icon="home" onClick={() => goTo('/')}>Home</Button>
+    </PageWrapper>
   )
 }
