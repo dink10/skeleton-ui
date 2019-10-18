@@ -9,8 +9,8 @@ const app = express()
 
 const proxyRouter = (apiPrefix) => (req) => {
   const pathname = req.url
-  return `${API_URL}/${pathname.replace(apiPrefix,'')}`
-};
+  return API_URL + pathname.replace(apiPrefix,'')
+}
 
 app.use(API_PREFIX, proxy({
   target: API_URL,

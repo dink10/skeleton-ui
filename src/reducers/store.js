@@ -15,6 +15,8 @@ const reducers = combineReducers({
 const middlewares = compose(
   applyMiddleware(
     routerMiddleware(history),
+  ),
+  applyMiddleware(
     thunkMiddleware,
   ),
   /* eslint-disable no-underscore-dangle */
