@@ -1,19 +1,21 @@
 import api from '/api'
 import { goTo } from '/history'
 
+const MODULE_NAME = 'AUTH'
+
 const { auth } = api.services
 
 // ACTIONS TYPES
-export const AUTH = 'AUTH'
-export const LOGIN = 'LOGIN'
+export const FETCH_USER = `${MODULE_NAME}/FETCH_USER`
+export const LOGIN = `${MODULE_NAME}/LOGIN`
 
 // ACTIONS HANDLERS
-export function authAction() {
+export function fetchUserAction() {
   return async (dispatch) => {
     try {
       const user = await auth.me()
       dispatch({
-        type: AUTH,
+        type: FETCH_USER,
         payload: user,
       })
     } catch (err) {

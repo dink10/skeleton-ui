@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
-import { authAction } from '/actions/auth'
+import { fetchUserAction } from '/actions/auth'
 import store from '/reducers/store'
 
 import 'gismart-ui/core/style.css'
@@ -15,5 +15,5 @@ const render = () => {
   ), document.getElementById('root'))
 }
 
-store.dispatch(authAction())
+store.dispatch(fetchUserAction())
   .then(() => render())

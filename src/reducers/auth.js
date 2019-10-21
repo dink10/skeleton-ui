@@ -1,6 +1,6 @@
 import {
   LOGIN,
-  AUTH,
+  FETCH_USER,
 } from '/actions/auth'
 
 const initState = {
@@ -10,7 +10,7 @@ const initState = {
 
 function authReducer(state = initState, { type, payload = null }) {
   switch (type) {
-    case AUTH: {
+    case FETCH_USER: {
       return { ...state, user: payload, isLoggedIn: true }
     }
     case LOGIN: {
