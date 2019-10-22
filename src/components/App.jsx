@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router'
 import history from '/history'
 import Layout, { Header, Footer, Content } from 'gismart-ui/core/components/Layout'
 
-import { Login, NotFound } from './pages'
+import { Login, NotFound } from '/pages'
 import Secure from './Secure'
 
 function App() {

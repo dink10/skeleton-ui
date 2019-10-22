@@ -15,7 +15,7 @@ export const PageWrapper = styled.div`
   align-items: flex-start;
   padding-left: 20px;
 
-  background: url('${require('../../../assest/img/defaultBg.jpg')}') no-repeat;
+  background: url('${require('../../assest/img/defaultBg.jpg')}') no-repeat;
   background-position: center;
   background-size: cover;
 
