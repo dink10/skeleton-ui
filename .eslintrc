@@ -36,6 +36,7 @@
     "react/forbid-prop-types": [2, {"forbid": ["any"]}],
     "semi": [2, "never"],
     "no-return-await": 0,
-    "max-len": 0
+    "max-len": 0,
+    "no-multiple-empty-lines": 2
   }
 }
