@@ -37,6 +37,7 @@
     "semi": [2, "never"],
     "no-return-await": 0,
     "max-len": 0,
-    "no-multiple-empty-lines": 2
+    "no-multiple-empty-lines": 2,
+    "no-plusplus": 0
   }
 }
