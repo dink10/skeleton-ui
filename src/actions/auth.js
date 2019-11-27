@@ -27,32 +27,30 @@ export function fetchUserAction() {
 }
 
 export const loginAction = () => async (dispatch) => (
-  new Promise((resolve, reject) => {
-    gapi.load('auth2', {
-      callback: async () => {
-        gapi.auth2.init({
-          ux_mode: 'popup',
-        })
+  gapi.load('auth2', {
+    callback: async () => {
+      gapi.auth2.init({
+        ux_mode: 'popup',
+      })
 
-        try {
-          const auth2 = await gapi.auth2.getAuthInstance()
-          const { code } = await auth2.grantOfflineAccess({
-            scope: 'profile email',
-            hd: 'gismart.com',
-          })
-          const user = await auth.login(code)
-          dispatch({
-            type: LOGIN,
-            payload: user,
-          })
-          resolve()
-        } catch (err) {
-          if (err.name) {
-            console.error(`LOGIN FAILED: ${err.name}(${err.code}): ${err.message}`)
-          }
-          reject()
+      try {
+        const auth2 = await gapi.auth2.getAuthInstance()
+        const { code } = await auth2.grantOfflineAccess({
+          scope: 'profile email',
+          hd: 'gismart.com',
+        })
+        const user = await auth.login(code)
+        dispatch({
+          type: LOGIN,
+          payload: user,
+        })
+        goTo('/')
+      } catch (err) {
+        if (err.name) {
+          console.error(`LOGIN FAILED: ${err.name}(${err.code}): ${err.message}`)
         }
-      },
-    })
+        // TODO: Add user friendly notification
+      }
+    },
   })
 )

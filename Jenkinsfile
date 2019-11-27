@@ -17,10 +17,10 @@ node ("awscli") {
    }
     stage("Replace tag") {
         sh 'pwd; ls -lah; git status'
-        z.replaceImage('k8s/yaml_admin.yaml',latestImageTag)
+        z.replaceImage('k8s/yaml_ui.yaml',latestImageTag)
     }
     stage("Deploy Dev") {
-        z.deployApp('devops1','devops1-default-eks','devops1-default-skeleton','k8s/yaml_admin.yaml')
+        z.deployApp('devops1','devops1-default-eks','devops1-default-skeleton','k8s/yaml_ui.yaml')
 
         sh "sleep 30; kubectl get po -n devops1-default-skeleton"
     }
@@ -36,13 +36,7 @@ if(env.BRANCH_NAME == 'master') {
           z.promoteImage(imageName,"app-${latestImageTag}",'dev')
       }
       stage("Deploy Prod") {
-          z.deployApp('prod','prod-defaulting-eks','prod-defaulting-skeleton','k8s/yaml_admin.yaml')
-
-          // Applying ingress configuration for appstor.com URL
-          z.deployApp('prod','prod-defaulting-eks','prod-defaulting-skeleton','k8s/ingress/prod/appstor-com.yml')
-
-          // Applying ingress configuration for short admin URL
-          z.deployApp('prod','prod-defaulting-eks','prod-defaulting-skeleton','k8s/ingress/prod/skeleton-admin-gismart-xyz.yml')
+          z.deployApp('prod','prod-defaulting-eks','prod-defaulting-skeleton','k8s/yaml_ui.yaml')
 
           sh "sleep 30; kubectl get po -n prod-defaulting-skeleton"
       }
