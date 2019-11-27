@@ -31,7 +31,6 @@ export const loginAction = () => async (dispatch) => (
     gapi.load('auth2', {
       callback: async () => {
         gapi.auth2.init({
-          client_id: process.env.GOOGLE_CLIENT_ID,
           ux_mode: 'popup',
         })
 

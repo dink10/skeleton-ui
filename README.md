@@ -18,7 +18,14 @@ Web application based on:
   
 * **GOOGLE_CLIENT_ID**  
 * **API_URL**  
-
+  
+## RUN UI APP INSIDE DOCKER
+  
+1) Add corrrect ENV variables to docker-compose file  
+2) Run docker-compose `docker-compose up` in root directory  
+  
+After steps above your app will be run in `localhost:5000`  
+  
 ## HOW TO SETUP WEB APP
 
 ### PRE-REQUIREMENTS
