@@ -1,13 +1,17 @@
 const Bundler = require('parcel-bundler')
 const express = require('express')
 const proxy = require('express-http-proxy')
+const apiMocker = require('connect-api-mocker');
 
 const { API_URL, PORT } = process.env
 const API_PREFIX = '/api'
 
 const app = express()
-
-app.use(API_PREFIX, proxy(API_URL))
+if (API_URL) {
+  app.use(API_PREFIX, proxy(API_URL))
+} else {
+  app.use(API_PREFIX, apiMocker('mocks/api'));
+}
 
 const bundler = new Bundler('./src/index.html')
 app.use(bundler.middleware())
