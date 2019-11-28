@@ -1,0 +1,8 @@
+version: "3.3"
+
+services:
+  frontend:
+    image: 978577353296.dkr.ecr.eu-west-1.amazonaws.com/skeleton-ui:app-${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: ./deploy.Dockerfile
