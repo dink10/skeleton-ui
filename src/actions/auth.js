@@ -9,6 +9,7 @@ const { auth } = api.services
 // ACTIONS TYPES
 export const FETCH_USER = `${MODULE_NAME}/FETCH_USER`
 export const LOGIN = `${MODULE_NAME}/LOGIN`
+export const LOGOUT = `${MODULE_NAME}/LOGOUT`
 
 // ACTIONS HANDLERS
 export function fetchUserAction() {
@@ -21,7 +22,6 @@ export function fetchUserAction() {
       })
     } catch (err) {
       console.error(err)
-      goTo('/login')
     }
   }
 }
@@ -54,3 +54,15 @@ export const loginAction = () => async (dispatch) => (
     },
   })
 )
+
+export const logoutAction = () => (async (dispatch) => {
+  try {
+    await auth.logout()
+    dispatch({
+      type: LOGOUT,
+    })
+    goTo('/login')
+  } catch (err) {
+    console.error(`LOGOUT FAILED: ${err}`)
+  }
+})

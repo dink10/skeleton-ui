@@ -1,3 +1,4 @@
+import { goTo } from '/history'
 
 class Client {
   constructor(baseUrl) {
@@ -22,6 +23,10 @@ class Client {
     }
 
     const response = await fetch(url, reqData)
+    if (response.status === 401) {
+      goTo('/login')
+    }
+
     if (!response.ok) {
       throw response
     }
