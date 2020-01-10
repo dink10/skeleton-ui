@@ -20,11 +20,15 @@ Web application based on:
   
 ## RUN UI APP INSIDE DOCKER
   
-1) Add corrrect ENV variables to docker-compose file  
-2) Build project image `docker image build -t skeleton . --file  ./local.Dockerfile`  
-3) Run image `docker run -p 5000:80 skeleton`  
+1) Add private ssh key to folder with **id_rsa** name  
+2) Add corrrect ENV variables to local.Dockerfile  
+3) Build project image `docker image build -t ui-app . --file  ./local.Dockerfile`  
+4) Run image `docker run -p 8080:80 ui-app`  
   
-After steps above your app will be run in `localhost:5000`  
+!! IMPORTANT !!  
+Localhost with port must be added to google console  
+  
+After steps above your app will be run in `localhost:8080`  
   
 ## HOW TO SETUP WEB APP
 
