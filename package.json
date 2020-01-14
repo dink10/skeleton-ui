@@ -13,6 +13,7 @@
     "connected-react-router": "6.5.2",
     "gismart-ui": "git+git@bitbucket.org:gismart/gismart-ui.git",
     "history": "4.10.1",
+    "moment": "2.24.0",
     "prop-types": "15.7.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",

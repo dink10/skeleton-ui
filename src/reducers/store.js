@@ -6,9 +6,11 @@ import {
 
 import history from '/history'
 import authReducer from './auth'
+import commonReducer from './common'
 
 const reducers = combineReducers({
   router: connectRouter(history),
+  common: commonReducer,
   auth: authReducer,
 })
 
