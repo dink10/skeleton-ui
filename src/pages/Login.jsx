@@ -5,8 +5,7 @@ import { LoginPg } from 'gismart-ui/core/components'
 import { loginAction } from '/actions/auth'
 
 function Login({ login }) {
-  return (<LoginPg appName="SKELETON" onLogin={login} />)
-
+  return (<LoginPg appName="Skeleton" onLogin={login} />)
 }
 
 Login.propTypes = {
