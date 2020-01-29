@@ -1,16 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Button } from 'gismart-ui/core/components'
+import { LoginPg } from 'gismart-ui/core/components'
 import { loginAction } from '/actions/auth'
-import { PageWrapper } from './style'
 
 function Login({ login }) {
-  return (
-    <PageWrapper>
-      <Button size="large" onClick={login}>Login</Button>
-    </PageWrapper>
-  )
+  return (<LoginPg appName="SKELETON" onLogin={login} />)
+
 }
 
 Login.propTypes = {

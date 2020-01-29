@@ -25,6 +25,9 @@ class Client {
     const response = await fetch(url, reqData)
     if (response.status === 401) {
       goTo('/login')
+      return {}
+    } else if (response.status === 204) {
+      return null
     }
 
     if (!response.ok) {
