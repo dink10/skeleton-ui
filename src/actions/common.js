@@ -19,7 +19,7 @@ export function startFetching(action) {
 export function stopFetching(actionToStop) {
   return (dispatch, getState) => {
     const runningActions = getState().common.actionList
-    const fetchList = runningActions.filter((action) => action !== actionToStop)
+    const fetchList = runningActions.filter((action) => action && action !== actionToStop)
     dispatch({
       type: STOP_FETCHING,
       payload: fetchList,
