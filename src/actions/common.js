@@ -9,15 +9,21 @@ export const SET_ERROR = `${MODULE_NAME}/SET_ERROR`
 export const RESET_ERROR = `${MODULE_NAME}/RESET_ERROR`
 
 // ACTIONS HANDLERS
-export function startFetching() {
+export function startFetching(action) {
   return {
     type: START_FETCHING,
+    payload: action,
   }
 }
 
-export function stopFetching() {
-  return {
-    type: STOP_FETCHING,
+export function stopFetching(actionToStop) {
+  return (dispatch, getState) => {
+    const runningActions = getState().common.actionList
+    const fetchList = runningActions.filter((action) => action !== actionToStop)
+    dispatch({
+      type: STOP_FETCHING,
+      payload: fetchList,
+    })
   }
 }
 
