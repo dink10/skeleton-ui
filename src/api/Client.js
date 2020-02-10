@@ -9,8 +9,12 @@ class Client {
     }
   }
 
+  makeQuery = (queryObj) => `?${Object
+    .entries(queryObj)
+    .map(([key, value]) =>`${key}=${typeof value === 'object' ? JSON.stringify(value) : value}`)}`
+
   doRequest = async (method, path, payload) => {
-    const url = `${this.baseUrl}/${path}`
+    let url = `${this.baseUrl}/${path}`
     const headers = { ...this.baseHeaders }
     const reqData = {
       headers,
@@ -18,7 +22,10 @@ class Client {
       credentials: 'include',
     }
 
-    if (payload) {
+    if (method === 'GET' && payload) {
+      const query = this.makeQuery(payload)
+      url = `${this.baseUrl}/${path}${query}`
+    } else if (payload) {
       reqData.body = JSON.stringify(payload)
     }
 
