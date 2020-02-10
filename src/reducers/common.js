@@ -8,15 +8,16 @@ import {
 const initState = {
   fetching: false,
   error: null,
+  actionList: [],
 }
 
 function commonReducer(state = initState, { type, payload = null }) {
   switch (type) {
     case START_FETCHING: {
-      return { ...state, fetching: true }
+      return { fetching: true, actionList: state.actionList.concat(payload) }
     }
     case STOP_FETCHING: {
-      return { ...state, fetching: false }
+      return { fetching: !!payload.length, actionList: payload }
     }
     case SET_ERROR: {
       return { ...state, error: payload }
