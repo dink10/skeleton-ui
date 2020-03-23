@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: 978577353296.dkr.ecr.eu-west-1.amazonaws.com/skeleton-ui:app-APPIMAGEPLACEHOLDER
+        image: 978577353296.dkr.ecr.eu-west-1.amazonaws.com/skeleton-ui:APPIMAGEPLACEHOLDER
         env:
         - name: GOOGLE_CLIENT_ID
           valueFrom:

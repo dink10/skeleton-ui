@@ -11,7 +11,7 @@ class Client {
 
   makeQuery = (queryObj) => `?${Object
     .entries(queryObj)
-    .map(([key, value]) =>`${key}=${typeof value === 'object' ? JSON.stringify(value) : value}`)}`
+    .map(([key, value]) => `${key}=${typeof value === 'object' ? JSON.stringify(value) : value}`)}`
 
   doRequest = async (method, path, payload) => {
     let url = `${this.baseUrl}/${path}`
@@ -33,7 +33,8 @@ class Client {
     if (response.status === 401) {
       goTo('/login')
       return {}
-    } else if (response.status === 204) {
+    }
+    if (response.status === 204) {
       return null
     }
 
