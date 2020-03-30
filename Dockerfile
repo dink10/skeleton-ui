@@ -1,5 +1,5 @@
 FROM node:alpine as builder
-ENV GOOGLE_CLIENT_ID=__GOOGLE_CLIENT_ID__
+ENV GOOGLE_LOGIN_CLIENT_ID=__GOOGLE_LOGIN_CLIENT_ID__
 COPY . /ui
 WORKDIR /ui
 RUN npm install && \
