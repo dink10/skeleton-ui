@@ -1,4 +1,4 @@
-import React, { useCallback} from 'react'
+import React, { useCallback } from 'react'
 import { goTo } from '/history'
 import { ErrorPg } from 'gismart-ui/core/components'
 
