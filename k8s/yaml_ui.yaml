@@ -18,11 +18,11 @@ spec:
       - name: app
         image: 978577353296.dkr.ecr.eu-west-1.amazonaws.com/skeleton-ui:APPIMAGEPLACEHOLDER
         env:
-        - name: GOOGLE_CLIENT_ID
+        - name: GOOGLE_LOGIN_CLIENT_ID
           valueFrom:
             secretKeyRef:
               name: google-secrets
-              key: GOOGLE_CLIENT_ID
+              key: GOOGLE_LOGIN_CLIENT_ID
         - name: API_URL
           valueFrom:
             configMapKeyRef:

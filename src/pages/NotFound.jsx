@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { goTo } from '/history'
-import { Button } from 'gismart-ui/core/components'
-import { PageWrapper } from './style'
+import { ErrorPg } from 'gismart-ui/core/components'
 
 export default function NotFound() {
+  const onClick = useCallback(() => goTo('/'), [])
+
   return (
-    <PageWrapper>
-      <h1>Page not found</h1>
-      <Button size="large" icon="home" onClick={() => goTo('/')}>Home</Button>
-    </PageWrapper>
+    <ErrorPg statusCode={404} onClick={onClick} />
   )
 }

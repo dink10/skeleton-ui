@@ -10,7 +10,7 @@ import Layout, {
 import Header from './Header'
 
 import { Login, NotFound } from '/pages'
-import Secure from './Secure'
+import Secure from './Auth'
 import Spinner from './Spinner'
 import ErrorNotification from './ErrorNotification'
 import Breadcrumb from './Breadcrumb'
@@ -31,12 +31,23 @@ function App() {
             <Route exact path="/" render={() => <Redirect to="/home" />} />
             <Switch>
               <Route path="/login" component={Login} />
+              {/* IMPORTANT ! You must send props to your component inside Secure for use isEditable, isReadable, isDeletable, isCreatable props */}
               <Route
                 path="/home"
                 render={() => (
-                  <Secure>
-                    <div>Home page</div>
-                  </Secure>
+                  <Secure
+                    resource="/home"
+                    component={(props) => { console.log(props); return <div>Home page</div> }}
+                  />
+                )}
+              />
+              <Route
+                path="/test"
+                render={() => (
+                  <Secure
+                    resource="/test"
+                    component={(props) => { console.log(props); return <div>Test page</div> }}
+                  />
                 )}
               />
               <Route component={NotFound} />

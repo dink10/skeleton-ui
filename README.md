@@ -15,7 +15,7 @@ Web application based on:
   
 ## REQUIRED ENV VARIABLES  
   
-* **GOOGLE_CLIENT_ID**  
+* **GOOGLE_LOGIN_CLIENT_ID**  
 * **API_URL**  
   
 ## RUN UI APP INSIDE DOCKER
@@ -45,7 +45,7 @@ After steps above your app will be run in `localhost:8080`
   `./package.json`   - line 2  
   `./src/index.html` - line 9  
 6) Add env variables:
-  * GOOGLE_CLIENT_ID  
+  * GOOGLE_LOGIN_CLIENT_ID  
   * API_URL  
 7) Install packages: `npm i`  
   **!!! Important !!!**  

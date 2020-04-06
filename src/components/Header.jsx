@@ -1,32 +1,43 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Header as HeaderWrapper } from 'gismart-ui/core/components/Layout'
 import { logoutAction } from '/actions/auth'
+import { isResourceAvailable, selectPermissions, permissionsPropType } from './Auth'
 
-function Header({ logout }) {
-  const match = useRouteMatch()
+const menuItems = [
+  {
+    id: '/home', text: 'Home', icon: 'home', path: '/home', resource: '/home',
+  },
+  {
+    id: '/test', text: 'Test', icon: 'eye', path: '/test', resource: '/test',
+  },
+]
+
+function Header({ logout, permissions }) {
+  const { pathname } = useLocation()
+  const menu = useMemo(() => menuItems.filter(({ resource }) => isResourceAvailable(resource, permissions, 'R')), [permissions])
+
   return (
     <HeaderWrapper
       Link={Link}
-      menuItems={[]}
+      menuItems={menu}
       appTitle="Skeleton"
       hideGlobalMenu
       onLogout={logout}
-      pathName={match.path}
+      pathName={pathname}
     />
   )
 }
 
-// Header.defaultProps = {
-// }
-
 Header.propTypes = {
   logout: PropTypes.func.isRequired,
+  permissions: permissionsPropType.isRequired,
 }
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
+  permissions: selectPermissions(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({

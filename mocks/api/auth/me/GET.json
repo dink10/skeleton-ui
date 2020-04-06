@@ -1,4 +1,19 @@
 {
-	"email": "test@test.com",
-	"picture": "photo.jpg"
+  "email": "test@test.com",
+  "permissions": [
+    {
+      "resource": "/home",
+      "actions": [
+        "U"
+      ],
+      "effect": "deny"
+    },
+    {
+      "resource": "/test",
+      "actions": [
+        "*"
+      ],
+      "effect": "deny"
+    }
+  ]
 }
