@@ -32,7 +32,7 @@ class Client {
     const response = await fetch(url, reqData)
     if (response.status === 401) {
       goTo('/login')
-      return {}
+      throw new Error('Unauthorized')
     }
     if (response.status === 204) {
       return null
