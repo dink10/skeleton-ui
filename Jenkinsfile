@@ -26,6 +26,37 @@ node ("awscli") {
     }
 }
 
+if(env.BRANCH_NAME == 'stage') {
+  stage('Approve dev environment'){
+      input "Deploy to Stage?"
+  }
+
+    stage('Verify dev'){
+      input "Is dev ok?"
+  }
+
+  node("awscli") {
+      stage("Mark latest image Dev") {
+          z.promoteImage(imageName,"${latestImageTag}",'dev')
+      }
+      stage("Deploy Prod") {
+          z.deployApp('prod','prod-defaulting-eks','stage-skeleton','k8s/ui.yaml')
+          sh "sleep 30; kubectl get po -n stage-skeleton"
+      }
+  }
+
+  stage('Verify stage'){
+      input "Is stage ok?"
+  }
+
+  node("awscli") {
+      stage("Mark latest image STAGE") {
+          z.promoteImage(imageName,"${latestImageTag}",'stage')
+      }
+  }
+
+}
+
 if(env.BRANCH_NAME == 'master') {
   stage('Approve dev environment'){
       input "Deploy to prod?"
