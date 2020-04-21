@@ -1,30 +1,20 @@
-const Bundler = require('parcel-bundler')
-const express = require('express')
 const proxy = require('express-http-proxy')
 const apiMocker = require('connect-api-mocker')
 
-const { API_URL, PORT } = process.env
+const { API_URL } = process.env
 const API_PREFIX = '/api'
 
-const app = express()
-if (API_URL) {
-  app.use(API_PREFIX, proxy(API_URL))
-} else {
-  app.use(API_PREFIX, apiMocker('mocks/api'))
-}
-
-const bundler = new Bundler('./src/index.html')
-app.use(bundler.middleware())
-
-function listen(port, tries = 0) {
-  app.listen(port, () => {
-    // eslint-disable-next-line
-    console.log(`\nApp running on http://localhost:${port}\n`)
-  }).on('error', (error) => {
-    if (error.code === 'EADDRINUSE' && tries < 10) {
-      listen(port + 1, tries + 1)
-    }
+function proxyServer(app) {
+  const prefix = API_URL ? 'SERVE' : 'MOCK'
+  app.use(API_PREFIX, (req, res, next) => {
+    console.log(`[${new Date().toLocaleTimeString()}]`, `[${prefix}]`, req.url)
+    next()
   })
+  if (API_URL) {
+    app.use(API_PREFIX, proxy(API_URL))
+  } else {
+    app.use(API_PREFIX, apiMocker('mocks/api'))
+  }
 }
 
-listen(Number(PORT || 8080))
+module.exports = proxyServer

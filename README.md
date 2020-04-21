@@ -52,3 +52,51 @@ After steps above your app will be run in `localhost:8080`
   You shoud have ssh connection to gismart bitbucket (required for `gismart-ui` package)  
 8) Start development server: `npm run start`  
 
+# TODO: make template fron this example
+# Kafka Connector
+
+### Service for storing Gismart analytics on Amazon S3
+
+## Dependencies
+
+For installing you should have next tools:
+- Golang
+- Docker
+- Apache Kafka
+- Access to Amazon S3
+
+## How to Install/Run
+
+### Locally
+- go get ./...
+- go build -o app
+- ./app
+
+### Using Docker
+
+Set up required ENV variables in docker compose and run
+docker-compose up/docker-compose start
+
+### How to use
+
+#### ENV variables
+- CONFIG_KAFKA_BROKERS    - list of kafka brokers (array)
+- CONFIG_LOG_LEVEL        - setup config level (debug/info/warn/error/fatal/panic)
+- CONFIG_KAFKA_VERSION    - kafka consumer version
+- Topics                  - topics for consumer (array)
+- CONFIG_ACCESS_KEY       - access key to amazon s3 
+- CONFIG_SECRET_KEY       - secret key to amazon s3 
+- CONFIG_BUCKET_NAME      - amazon s3 bucket name
+- CONFIG_REGION           - amazon s3 bucket region
+- CONFIG_MAX_BUNCH_COUNT  - max count of messages for storing on s3
+- CONFIG_MAX_BUNCH_SIZE   - max size of bunch for storing on s3
+
+### Block Diagram
+
+![picture](docs/images/schema.jpg)
+
+### Links
+
+Repository: 
+v1: https://bitbucket.org/gismart/kafka-connector/src/v1/
+v2: https://bitbucket.org/gismart/kafka-connector/src/v2/

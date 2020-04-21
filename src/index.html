@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="../assest/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="google-signin-client_id" content="{{ GOOGLE_LOGIN_CLIENT_ID }}" />
+    <meta name="google-signin-client_id" content=<%= htmlWebpackPlugin.options.clientID %> />
     <script src="https://apis.google.com/js/api.js" async defer></script>
-    <title>Sceleton</title>
+    <title>Skeleton</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script src="./index.js"></script>
+    <script src="./index.tsx"></script>
   </body>
 </html>
