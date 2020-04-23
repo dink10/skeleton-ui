@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`app snapshot 1`] = `
-<div>
-  Hello type script test hot reload 123 432 0999 999 333
-</div>
-`;

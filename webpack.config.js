@@ -25,7 +25,6 @@ const config = {
       'react-dom',
       'react-router',
       'react-router-dom',
-      'prop-types',
       'redux',
       'react-redux',
       'redux-thunk',
@@ -42,15 +41,39 @@ const config = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     alias: {
+      'route-history': path.resolve(__dirname, 'src/routeHistory.ts'),
+      'components': path.resolve(__dirname, 'src/components'),
+      'store': path.resolve(__dirname, 'src/store'),
+      'reducers': path.resolve(__dirname, 'src/reducers'),
+      'actions': path.resolve(__dirname, 'src/actions'),
+      'api': path.resolve(__dirname, 'src/api'),
+      'services': path.resolve(__dirname, 'src/services'),
+      'models': path.resolve(__dirname, 'src/models'),
+      'modules': path.resolve(__dirname, 'src/modules'),
+      'pages': path.resolve(__dirname, 'src/pages')
     }
   },
   devtool: 'source-map',
   module: {
     rules: [
       { test: /\.(ts|tsx)$/, use: [{ loader: 'ts-loader' }], exclude: [/node_modules/, /tests/] },
-      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { minimize: PROD } }] },
-      { test: /\.(jpg|png)$/, use: 'file-loader?name=./images/[name].[ext]' },
-      { test: /\.(woff|woff2|ttf|otf|eot|svg)$/, use: 'file-loader?name=./fonts/[name].[ext]' }
+      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
+      { test:/\.(png|jpg|jpe?g|svg)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            esModule: false,
+          },
+        }]
+      },
+      // { test:/\.(woff|woff2|ttf|otf|eot)$/,
+      //   use: [{
+      //     loader: 'file-loader',
+      //     options: {
+      //       esModule: false,
+      //     },
+      //   }]
+      // }
     ],
   },
   optimization: {
@@ -66,14 +89,13 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({ SERVICE_URL: '"/api/v1/"' }),
+    new webpack.DefinePlugin({ API_PREFIX: '"/api"' }),
     new MiniCssExtractPlugin({ filename: '[name].bundle.css', allChunks: true }),
     new HtmlPlugin({
       clientID: GOOGLE_LOGIN_CLIENT_ID || '__GOOGLE_LOGIN_CLIENT_ID__',
       template: './src/index.html'
     })
   ],
-  // node: { Buffer: false }, // https://github.com/webpack-contrib/style-loader/issues/194
   devServer: {
     hot: true,
     port: PORT || 8080,

@@ -7,7 +7,7 @@ const API_PREFIX = '/api'
 function proxyServer(app) {
   const prefix = API_URL ? 'SERVE' : 'MOCK'
   app.use(API_PREFIX, (req, res, next) => {
-    console.log(`[${new Date().toLocaleTimeString()}]`, `[${prefix}]`, req.url)
+    console.log(`[${new Date().toLocaleTimeString()}] [${prefix}] ${req.method} - ${req.url}`)
     next()
   })
   if (API_URL) {

@@ -5,12 +5,6 @@
   ],
   "jsRules": {},
   "rules": {
-    "align": [
-      true,
-      "parameters",
-      "arguments",
-      "statements"
-    ],
     "ban": false,
     "class-name": true,
     "comment-format": [
@@ -37,7 +31,7 @@
     "label-position": true,
     "max-line-length": [
       true,
-      120
+      150
     ],
     "member-access": false,
     "member-ordering": [
@@ -99,10 +93,6 @@
     "ban-comma-operator": false,
     "no-conditional-assignment": true,
     "no-floating-promises": true,
-    "no-implicit-dependencies": [
-      true,
-      "dev"
-    ],
     "no-inferred-empty-object-type": false,
     "no-invalid-template-strings": true,
     "no-invalid-this": true,
@@ -166,7 +156,6 @@
     "encoding": true,
     "import-spacing": true,
     "match-default-export-name": true,
-    "newline-before-return": true,
     "newline-per-chained-call": false,
     "new-parens": true,
     "no-boolean-literal-compare": true,
@@ -188,7 +177,7 @@
     "object-literal-shorthand": true,
     "one-variable-per-declaration": false,
     "ordered-imports": false,
-    "prefer-method-signature": true,
+    "prefer-method-signature": false,
     "prefer-switch": [
       true,
       {
@@ -207,8 +196,7 @@
       "never"
     ],
     "space-before-function-paren": false,
-    "switch-final-break": false,
-    "type-literal-delimiter": true
+    "switch-final-break": false
   },
   "rulesDirectory": []
 }
