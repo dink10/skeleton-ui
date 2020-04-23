@@ -93,7 +93,8 @@ const config = {
     new MiniCssExtractPlugin({ filename: '[name].bundle.css', allChunks: true }),
     new HtmlPlugin({
       clientID: GOOGLE_LOGIN_CLIENT_ID || '__GOOGLE_LOGIN_CLIENT_ID__',
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: path.resolve(__dirname, 'assets/favicon.ico')
     })
   ],
   devServer: {
