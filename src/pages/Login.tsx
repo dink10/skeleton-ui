@@ -7,9 +7,7 @@ export interface ILoginPageProps {
   login?: () => void
 }
 
-const LoginPage: React.FC<ILoginPageProps> = ({ login }) => {
-  return (<LoginPg appName="Skeleton" onLogin={login} />)
-}
+const LoginPage: React.FC<ILoginPageProps> = ({ login }) => (<LoginPg appName="Skeleton" onLogin={login} />)
 
 const mapActionsToProps = (dispatch) => ({
   login: () => dispatch(loginAction()),

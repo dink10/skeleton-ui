@@ -15,15 +15,15 @@ export interface IAppState {
   common: ICommonState
 }
 
-export type TAppActionThunk<PayloadType, ReturnType = void, > = ThunkAction<
-  ReturnType,
+export type TAppActionThunk<TPayload, TReturn = void, > = ThunkAction<
+  TReturn,
   IAppState,
   unknown,
-  IAction<PayloadType>
+  IAction<TPayload>
 >
 
-export type TAppDispatchThunk<PayloadType> = ThunkDispatch<
+export type TAppDispatchThunk<TPayload> = ThunkDispatch<
   IAppState,
   unknown,
-  IAction<PayloadType>
+  IAction<TPayload>
 >

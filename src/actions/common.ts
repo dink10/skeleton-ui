@@ -9,7 +9,7 @@ export const SET_ERROR = `${MODULE_NAME}/SET_ERROR`
 export const RESET_ERROR = `${MODULE_NAME}/RESET_ERROR`
 
 // actions handlers
-export function startFetching(action: string): IAction<string>{
+export function startFetching(action: string): IAction<string> {
   return {
     type: START_FETCHING,
     payload: action,

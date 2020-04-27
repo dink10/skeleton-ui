@@ -40,7 +40,7 @@ class ApiService {
         body: requestBody,
       })
 
-      if(!res.ok) {
+      if (!res.ok) {
         return this.processError<T>(res)
       }
 
@@ -55,10 +55,10 @@ class ApiService {
     let query = ''
 
     if (params) {
-      let items: string[] = []
-      for (let key in params) {
+      const items: string[] = []
+      Object.keys(params).forEach((key) => {
         items.push(encodeURI(`${key}=${params[key]}`))
-      }
+      })
       query = `?${items.join('&')}`
     }
 
@@ -71,13 +71,13 @@ class ApiService {
     return `${API_PREFIX}/${url}${query}`
   }
 
-  protected buildHeaders(headers?: Headers): Headers {
-    if (!headers) {
-      headers = new Headers({
-        'Content-Type': 'application/json',
-      })
-    }
+  protected getDefaultHeaders(): Headers {
+    return new Headers({
+      'Content-Type': 'application/json',
+    })
+  }
 
+  protected buildHeaders(headers: Headers = this.getDefaultHeaders()): Headers {
     if (!headers.get('Content-Type')) {
       headers.append('Content-Type', 'application/json')
     }
@@ -104,3 +104,28 @@ class ApiService {
 }
 
 export default ApiService
+
+// TODO: apply this rules to api.services
+// Error:
+// {
+//   code: 502,
+//   error: 'Bad gateway'
+// }
+
+// Reponce body:
+// {
+//   code: 200,
+//   // If you endpoint return only one item (f.e. you request some entity by id)
+//   entity {} -> if you request entity by id
+//   // else if you request list of data
+//   meta: {} // some metadata f.e. total if you request part of full list
+//   data: []
+// }
+
+// Query params:
+// available type: string
+// * if you send array: should be string separated `,`
+// f.e.  ['a', 'b', 'c'] . -> a,b,c
+// * for boolean variable:
+// false -> 'false'
+// true -> 'true'

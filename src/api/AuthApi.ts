@@ -4,9 +4,9 @@ import IUser from 'models/user.model'
 import BaseApi from './BaseApi'
 
 class AuthApi extends BaseApi<IUser> {
-  loginPath: string ='auth/login'
-  mePath: string ='auth/me'
-  logoutPath: string ='auth/logout'
+  loginPath ='auth/login'
+  mePath ='auth/me'
+  logoutPath ='auth/logout'
 
   me(): Promise<IResponseResult<IUser>> {
     const options: IRequestOptions = {

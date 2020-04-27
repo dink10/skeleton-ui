@@ -2,9 +2,9 @@ import React, { useMemo, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { goTo } from 'route-history'
 import { ErrorPg } from 'gismart-ui/core/components'
+import IPermission from 'models/permission.model'
 import { getPermissions } from './utils'
 import { selectPermissions } from './selects'
-import IPermission from 'models/permission.model'
 
 const FORBIDDEN_ERROR = 403
 
@@ -15,7 +15,9 @@ export interface ISecure {
   permissions?: IPermission[]
 }
 
-const Secure: React.FC<ISecure> = ({ isLoggedIn, resource, permissions, component: Component }) => {
+const Secure: React.FC<ISecure> = ({
+  isLoggedIn, resource, permissions, component: Component,
+}) => {
   if (!isLoggedIn) {
     goTo('/login')
   }

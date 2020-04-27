@@ -4,17 +4,15 @@ import { Breadcrumb as BreadcrumbCmp } from 'gismart-ui/core/components'
 
 export interface IBreadcrumb extends RouteComponentProps{
   config?: {
-    icon?: string
-    title?: string
     [propName: string]: string | {
       icon?: string
-      title?: string,
-    } | undefined,
+      title?: string
+    } | undefined
+    icon?: string
+    title?: string
   }[]
 }
 
-const Breadcrumb: React.FC<IBreadcrumb> = ({ location: { pathname }, config }) => {
-  return (<BreadcrumbCmp path={pathname} config={config} Link={Link} />)
-}
+const Breadcrumb: React.FC<IBreadcrumb> = ({ location: { pathname }, config }) => (<BreadcrumbCmp path={pathname} config={config} Link={Link} />)
 
 export default withRouter(Breadcrumb)

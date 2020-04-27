@@ -9,7 +9,7 @@ export interface IErrorNotificationProps {
   resetErrorAction?: () => void
 }
 
-const ErrorNotification: React.FC<IErrorNotificationProps> = ({ error, resetErrorAction  }) => {
+const ErrorNotification: React.FC<IErrorNotificationProps> = ({ error, resetErrorAction }) => {
   useEffect(() => {
     if (error) {
       console.log(error)
@@ -17,7 +17,7 @@ const ErrorNotification: React.FC<IErrorNotificationProps> = ({ error, resetErro
         title: error,
         onOk: () => {
           modal.destroy()
-          if(resetErrorAction) {
+          if (resetErrorAction) {
             resetErrorAction()
           }
         },

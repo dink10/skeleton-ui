@@ -1,8 +1,10 @@
-import ApiService, { IResponseResult, IRequestOptions, RequestMethod, IRequestParams } from 'services/api.service'
+import ApiService, {
+  IResponseResult, IRequestOptions, RequestMethod, IRequestParams,
+} from 'services/api.service'
 
 class BaseApi<T> {
   protected api: ApiService
-  protected path: string = ''
+  protected path = ''
 
   constructor(api: ApiService) {
     this.api = api

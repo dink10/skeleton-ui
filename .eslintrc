@@ -1,0 +1,97 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "import"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "airbnb"
+  ],
+  "rules": {
+    "indent": [
+      2,
+      2,
+      { "SwitchCase": 1 }
+    ],
+    "semi": [2, "never"],
+    "no-return-await": 0,
+    "no-multiple-empty-lines": 2,
+    "max-len": [
+      2,
+      150
+    ],
+    "no-debugger": 2,
+    "no-magic-numbers": 2,
+    "no-unneeded-ternary": 2,
+    "no-useless-rename": 2,
+    "prefer-const": 2,
+    // "prefer-conditional-expression": 2, TODO: check rule
+    "prefer-object-spread": 2,
+    // "deprecation": 2, TODO: check
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "max-classes-per-file": [
+      2,
+      1
+    ],
+    "max-lines": [
+      2,
+      500
+    ],
+    // "match-default-export-name": 2, TODO: check
+    // "prefer-switch": [// TODO: check in types script linter
+    //   2,
+    //   {
+    //     "min-cases": 3
+    //   }
+    // ],
+    "quotes": [// TODO: check JSX double quotes
+      2,
+      "single",
+      { "allowTemplateLiterals": true }
+    ],
+    "class-methods-use-this": 0,
+    "lines-between-class-members": [2, "always", { "exceptAfterSingleLine": true }],
+    "padded-blocks": 0,
+
+
+    "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/naming-convention": [2,
+      { "selector": "interface", "format": ["PascalCase"], "prefix": ["I"] },
+      { "selector": "typeAlias", "format": ["PascalCase"], "prefix": ["T"] },
+      { "selector": "typeParameter", "format": ["PascalCase"], "prefix": ["T"] }
+    ],
+    "@typescript-eslint/member-ordering": 2,
+    "@typescript-eslint/member-delimiter-style": [2, {
+      "multiline": {
+        "delimiter": "none"
+      },
+      "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+      }
+    }],
+
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "import/no-absolute-path": 0,
+    "import/no-unresolved": 0,
+    "import/no-unused-modules": [2, {"unusedExports": true}],
+    "import/order": 2,
+    "import/newline-after-import": 2,
+  
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/jsx-props-no-spreading": 0,
+    "react/prop-types": 0
+  }
+}

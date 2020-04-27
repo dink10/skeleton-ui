@@ -5,7 +5,7 @@ const { API_URL } = process.env
 const API_PREFIX = '/api'
 
 function proxyServer(app) {
-  const prefix = API_URL ? 'SERVE' : 'MOCK'
+  const prefix = API_URL ? 'SERVER' : 'MOCK'
   app.use(API_PREFIX, (req, res, next) => {
     console.log(`[${new Date().toLocaleTimeString()}] [${prefix}] ${req.method} - ${req.url}`)
     next()

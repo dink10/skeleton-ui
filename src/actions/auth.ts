@@ -11,28 +11,26 @@ export const LOGIN = `${MODULE_NAME}/LOGIN`
 export const LOGOUT = `${MODULE_NAME}/LOGOUT`
 
 // actions handlers
-export const fetchUser = (): any => {
-  return async (dispatch: TAppDispatchThunk<IUser>): Promise<void> => {
-    const response = await authApi.me()
+export const fetchUser = (): any => async (dispatch: TAppDispatchThunk<IUser>): Promise<void> => {
+  const response = await authApi.me()
 
-    if (!response.success) {
-      goTo('/login')
-      return
-    }
-
-    dispatch({
-      type: SET_USER,
-      payload: response.body,
-    })
+  if (!response.success) {
+    goTo('/login')
+    return
   }
+
+  dispatch({
+    type: SET_USER,
+    payload: response.body,
+  })
 }
 
 declare const gapi: any
-export const loginAction = ():any => async (dispatch: TAppDispatchThunk<IUser>) => {
-  debugger
+export const loginAction = (): any => async (dispatch: TAppDispatchThunk<IUser>) => {
   gapi.load('auth2', {
     callback: async () => {
       gapi.auth2.init({
+        // eslint-disable-next-line @typescript-eslint/camelcase
         ux_mode: 'popup',
       })
 
@@ -44,7 +42,7 @@ export const loginAction = ():any => async (dispatch: TAppDispatchThunk<IUser>) 
         })
         const response = await authApi.login(code)
 
-        if(response.success) {
+        if (response.success) {
           dispatch({
             type: SET_USER,
             payload: response.body,

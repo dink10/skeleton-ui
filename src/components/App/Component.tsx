@@ -6,9 +6,9 @@ import { BackToTop } from 'gismart-ui/core/components'
 import Layout, {
   Footer, Content, MainWrapper, SubHeader,
 } from 'gismart-ui/core/components/Layout'
+import { Login, NotFound } from 'pages'
 import Header from '../Header'
 
-import { Login, NotFound } from 'pages'
 import Secure from '../Auth'
 import Spinner from '../Spinner'
 import ErrorNotification from '../ErrorNotification'

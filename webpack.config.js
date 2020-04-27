@@ -37,6 +37,7 @@ const config = {
   output: {
     path: OUTPUT_PATH,
     filename: 'js/[name].bundle.js',
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
