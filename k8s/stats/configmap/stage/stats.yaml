@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: stats-configmap
+data:
+  # Configuration values can be set as key-value properties
+  STATS_URL: "https://proxy-kafka-dev.gismart.xyz"

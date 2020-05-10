@@ -2,6 +2,7 @@ import { authApi } from 'api'
 import { TAppDispatchThunk } from 'store'
 import IUser from 'models/user.model'
 import { goTo } from 'route-history'
+import { CustomAnalytics } from '@gismart/ui.library/core/services/analytics'
 
 const MODULE_NAME = 'AUTH'
 
@@ -11,6 +12,15 @@ export const LOGIN = `${MODULE_NAME}/LOGIN`
 export const LOGOUT = `${MODULE_NAME}/LOGOUT`
 
 // actions handlers
+function setUser(user) {
+  // eslint-disable-next-line no-new
+  new CustomAnalytics(user.email)
+  return ({
+    type: SET_USER,
+    payload: user,
+  })
+}
+
 export const fetchUser = (): any => async (dispatch: TAppDispatchThunk<IUser>): Promise<void> => {
   const response = await authApi.me()
 
@@ -19,10 +29,7 @@ export const fetchUser = (): any => async (dispatch: TAppDispatchThunk<IUser>): 
     return
   }
 
-  dispatch({
-    type: SET_USER,
-    payload: response.body,
-  })
+  dispatch(setUser(response.body))
 }
 
 declare const gapi: any
@@ -43,10 +50,7 @@ export const loginAction = (): any => async (dispatch: TAppDispatchThunk<IUser>)
         const response = await authApi.login(code)
 
         if (response.success) {
-          dispatch({
-            type: SET_USER,
-            payload: response.body,
-          })
+          dispatch(setUser(response.body))
           goTo('/')
         } else {
           goTo('/login')

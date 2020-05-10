@@ -23,6 +23,7 @@ node ("awscli") {
         z.replaceImage('k8s/yaml_ui.yaml',latestImageTag)
     }
     stage("Deploy Dev") {
+        z.deployApp('devops1','devops1-default-eks','dev-skeleton','k8s/stats/configmap/dev/stats.yaml')
         z.deployApp('devops1','devops1-default-eks','devops1-default-skeleton','k8s/yaml_ui.yaml')
 
         sh "sleep 30; kubectl get po -n devops1-default-skeleton"
@@ -43,6 +44,7 @@ if(env.BRANCH_NAME == 'stage') {
           z.promoteImage(imageName,"${latestImageTag}",'dev')
       }
       stage("Deploy Prod") {
+          z.deployApp('prod','prod-defaulting-eks','stage-skeleton','k8s/stats/configmap/stage/stats.yaml')
           z.deployApp('prod','prod-defaulting-eks','stage-skeleton','k8s/ui.yaml')
           sh "sleep 30; kubectl get po -n stage-skeleton"
       }
@@ -70,6 +72,7 @@ if(env.BRANCH_NAME == 'master') {
           z.promoteImage(imageName,"app-${latestImageTag}",'dev')
       }
       stage("Deploy Prod") {
+          z.deployApp('prod','prod-defaulting-eks','prod-defaulting-skeleton', 'k8s/stats/configmap/prod/stats.yaml')
           z.deployApp('prod','prod-defaulting-eks','prod-defaulting-skeleton','k8s/yaml_ui.yaml')
 
           sh "sleep 30; kubectl get po -n prod-defaulting-skeleton"
