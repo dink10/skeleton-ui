@@ -1,40 +1,24 @@
 # Skeleton-ui  
 
+## Version **2.0.0**
+## Description
+Template for all UI apps in Gismart company  
+  
 Web application based on:
+* Typescript
 * React + redux
 * Google api for auth
-* [Gismart UI library](https://bitbucket.org/gismart/gismart-ui/) base on [Antd](https://ant.design/)
-
+* [Gismart UI library](https://bitbucket.org/gismart/gismart-ui/) base on [Antd](https://ant.design/)  
+    
+### Links  
   
-## AVAILABLE SCRIPTS  
+- [Repository](https://bitbucket.org/gismart/skeleton-ui/src/develop/)  
+- [Code style GUIDE](STYLE_GUIDE.md)  
   
-    `start` - run development service with proxy to api  
-    `build` - make production build  
-    `lint`  - run linter  
-    `lint:fix` - run linter with fix flag  
+## HOW TO SETUP NEW WEB APP
   
-## REQUIRED ENV VARIABLES  
-  
-* **GOOGLE_LOGIN_CLIENT_ID**  
-* **API_URL**  
-  
-## RUN UI APP INSIDE DOCKER
-  
-1) Add private ssh key to folder with **id_rsa** name  
-2) Add corrrect ENV variables to local.Dockerfile  
-3) Build project image `docker image build -t ui-app . --file  ./local.Dockerfile`  
-4) Run image `docker run -p 8080:80 ui-app`  
-  
-!! IMPORTANT !!  
-Localhost with port must be added to google console  
-  
-After steps above your app will be run in `localhost:8080`  
-  
-## HOW TO SETUP WEB APP
-
 ### PRE-REQUIREMENTS
-* REST-API Server  
-* Google auth (client id)  
+* NPM AUTH token
 
 ### SETUP  
 1) Fork this repository  
@@ -47,8 +31,47 @@ After steps above your app will be run in `localhost:8080`
 6) Add env variables:
   * GOOGLE_LOGIN_CLIENT_ID  
   * API_URL  
+  * NPM_AUTH
 7) Install packages: `npm i`  
-  **!!! Important !!!**  
-  You shoud have ssh connection to gismart bitbucket (required for `gismart-ui` package)  
 8) Start development server: `npm run start`  
+9) Remove content on README.md file before **README TEMPLATE** line
 
+
+# README TEMPLATE
+  
+# __PROJECT NAME__
+
+## Version **0.0.1**
+## Description
+Description area. Write few words what project do  
+  
+### Links  
+  
+- [Repository]()  
+- [Code style GUIDE](STYLE_GUIDE.md)  
+- Environments 
+  - [Dev]()  
+  - [Stage]()  
+  - [Prod]()  
+  
+## ENV variables
+- NPM_AUTH                  - Auth token for [Gismart npm](https://npm.gismart.xyz)
+- GOOGLE_LOGIN_CLIENT_ID    - Google client id (required for authorization through google)
+- API_URL                   - URL of Back-end server
+  
+## Dependencies
+For installing you should have next tools:
+- Node
+- Docker
+- Access to [Gismart npm](https://npm.gismart.xyz)
+
+## How to Install/Run
+
+### Locally
+- cd ./\__PROJECT_ROOT__
+- npm i
+- npm run start
+
+### Using Docker
+- Set up required ENV variables in docker compose and run
+- docker-compose up/docker-compose start
