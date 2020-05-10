@@ -1,8 +1,7 @@
 # Skeleton-ui  
 
 ## Version **2.0.0**
-## Description
-Template for all UI apps in Gismart company  
+## Template for all UI apps in Gismart company  
   
 Web application based on:
 * Typescript
