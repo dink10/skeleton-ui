@@ -12,7 +12,7 @@ export interface IErrorNotificationProps {
 const ErrorNotification: React.FC<IErrorNotificationProps> = ({ error, resetErrorAction }) => {
   useEffect(() => {
     if (error) {
-      console.log(error)
+      console.error(error)
       const modal = Modal.error({
         title: error,
         onOk: () => {

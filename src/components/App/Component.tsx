@@ -37,7 +37,7 @@ function App() {
                 render={() => (
                   <Secure
                     resource="/home"
-                    component={(props) => { console.log(props); return <div>Home page</div> }}
+                    component={() => <div>Home page</div>}
                   />
                 )}
               />
@@ -46,7 +46,7 @@ function App() {
                 render={() => (
                   <Secure
                     resource="/test"
-                    component={(props) => { console.log(props); return <div>Test page</div> }}
+                    component={() => <div>Test page</div>}
                   />
                 )}
               />

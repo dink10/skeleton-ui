@@ -27,6 +27,7 @@
       2,
       150
     ],
+    "no-console": [2, {"allow": ["warn", "error"] }],
     "no-debugger": 2,
     "no-magic-numbers": 2,
     "no-unneeded-ternary": 2,
@@ -80,6 +81,7 @@
           "requireLast": false
       }
     }],
+    "@typescript-eslint/explicit-function-return-type": 0,
 
     "import/extensions": 0,
     "import/no-extraneous-dependencies": 0,
