@@ -1,11 +1,19 @@
 # Skeleton-ui  
 
-### Template for all UI apps in Gismart company
-
+## Version **2.0.0**
+## Description
+Template for all UI apps in Gismart company  
+  
 Web application based on:
+* Typescript
 * React + redux
 * Google api for auth
 * [Gismart UI library](https://bitbucket.org/gismart/gismart-ui/) base on [Antd](https://ant.design/)  
+    
+### Links  
+  
+- [Repository](https://bitbucket.org/gismart/skeleton-ui/src/develop/)  
+- [Code style GUIDE](STYLE_GUIDE.md)  
   
 ## HOW TO SETUP NEW WEB APP
   
@@ -35,14 +43,16 @@ Web application based on:
 
 ## Version **0.0.1**
 ## Description
-Description area. Write few words what project do
-
+Description area. Write few words what project do  
+  
 ### Links  
   
 - [Repository]()  
-- [Dev env]()  
-- [Stage env]()  
-- [Prod env]()  
+- [Code style GUIDE](STYLE_GUIDE.md)  
+- Environments 
+  - [Dev]()  
+  - [Stage]()  
+  - [Prod]()  
   
 ## ENV variables
 - NPM_AUTH                  - Auth token for [Gismart npm](https://npm.gismart.xyz)
