@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { goTo } from 'route-history'
-import { ErrorPg } from 'gismart-ui/core/components'
+import { ErrorPg } from '@gismart/ui.library/core/components'
 
 const NOT_FOUND_ERROR = 404
 

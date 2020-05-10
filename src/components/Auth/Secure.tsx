@@ -1,7 +1,7 @@
 import React, { useMemo, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { goTo } from 'route-history'
-import { ErrorPg } from 'gismart-ui/core/components'
+import { ErrorPg } from '@gismart/ui.library/core/components'
 import IPermission from 'models/permission.model'
 import { getPermissions } from './utils'
 import { selectPermissions } from './selects'

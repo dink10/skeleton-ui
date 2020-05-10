@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter, Link, RouteComponentProps } from 'react-router-dom'
-import { Breadcrumb as BreadcrumbCmp } from 'gismart-ui/core/components'
+import { Breadcrumb as BreadcrumbCmp } from '@gismart/ui.library/core/components'
 
 export interface IBreadcrumb extends RouteComponentProps{
   config?: {

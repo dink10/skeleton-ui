@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
 import store from 'store'
 import { fetchUser } from 'actions/auth'
-import 'gismart-ui/core/style.css'
+import '@gismart/ui.library/core/style.css'
 import App from './components/App'
 
 const render = () => {

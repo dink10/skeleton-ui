@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { IAppState } from 'store'
-import { Spinner as SpinnerCmp } from 'gismart-ui/core/components'
+import { Spinner as SpinnerCmp } from '@gismart/ui.library/core/components'
 
 export interface ISpinner {
   fetching?: boolean

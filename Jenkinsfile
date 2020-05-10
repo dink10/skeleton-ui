@@ -12,9 +12,12 @@ node ("awscli") {
       checkout scm
   }
    stage("Build"){
-       sh 'git status'
-       latestImageTag = z.buildImage()
-   }
+      withCredentials([ string(credentialsId: 'NPM_AUTH', variable: 'NPM_AUTH') ])
+      {
+        sh 'git status'
+        latestImageTag = z.buildImage()
+      }
+    }
     stage("Replace tag") {
         sh 'pwd; ls -lah; git status'
         z.replaceImage('k8s/yaml_ui.yaml',latestImageTag)

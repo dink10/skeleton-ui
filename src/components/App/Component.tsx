@@ -2,10 +2,10 @@ import React from 'react'
 import { ConnectedRouter } from 'connected-react-router'
 import routeHistory from 'route-history'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { BackToTop } from 'gismart-ui/core/components'
+import { BackToTop } from '@gismart/ui.library/core/components'
 import Layout, {
   Footer, Content, MainWrapper, SubHeader,
-} from 'gismart-ui/core/components/Layout'
+} from '@gismart/ui.library/core/components/Layout'
 import { Login, NotFound } from 'pages'
 import Header from '../Header'
 

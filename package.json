@@ -19,7 +19,7 @@
     "@types/redux": "~3.6.0",
     "@types/redux-logger": "~3.0.7",
     "connected-react-router": "~6.8.0",
-    "gismart-ui": "git+ssh://git@bitbucket.org/gismart/gismart-ui.git#version_2",
+    "@gismart/ui.library": "2.x",
     "history": "~4.10.1",
     "moment": "~2.24.0",
     "react": "~16.13.1",

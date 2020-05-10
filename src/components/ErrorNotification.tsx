@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Modal } from 'gismart-ui/core/components'
+import { Modal } from '@gismart/ui.library/core/components'
 import { resetError } from 'actions/common'
 import { IAppState } from 'store'
 
