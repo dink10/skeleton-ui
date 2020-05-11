@@ -2,19 +2,19 @@
 
 ## Naming
 
-  #### Code
+  ### Code  
   * For naming we are use CamelCase style
   * Class name should start from Capital latter
   * Type definition start from T  
   * Interface definition start from I  
-  #### Files
+  ### Files  
   * extension: .tsx - for files with jsx code, .ts - for other
   * name start from Capital letter if file export default react component(class cmp or functional cmp) or class 
 
 ## Code separation
 * Root component folder contain cmp which used in root level or shared between modules
 * Project must be split to modules
-* Every module must have next structure:
+* Every module must have next structure:  
     ```
     | - module
       | - components
@@ -36,14 +36,14 @@
     ```
   * components - folder which contain all React cmp specific for this module(See **React component rules** section)
   * redux - folder.
-    * selects - file with all selects from store. Select name should start from `get` Select example:
+    * selects - file with all selects from store. Select name should start from `get` Select example:  
       ```javascript
         export getName = (state: AppState): string => state.name
       ```
     * actions - contain all actions
     * reducer - definition of module reducer.
   * service - optional folder which store all module services. If service can be used in few modules, so you should put this service to root service folder. Service file name must follow next pattern: `ServiceName.service.ts`
-  * Container - entry point to module. Must contain only react switch with definition of all modules routes. Example:
+  * Container - entry point to module. Must contain only react switch with definition of all modules routes. Example:  
     ```javascript
     import React from 'react'
     import { Switch, Route, useRouteMatch } from 'react-router-dom'
@@ -66,7 +66,7 @@
 
     export default Example
     ```
-  * index:
+  * index:  
     ```javascript
     import Container from './Container'
 
@@ -87,10 +87,10 @@
 3 - useCallback  
   
 
-#### React component rules:
+### React component rules:
 * Cmp must export default themselves
 * Export interface of props. Name must follow next pattern: `I[CmpName]Props`
-* Component must follow next template
+* Component must follow next template  
   ```javascript
   import React from 'react'
 
@@ -103,11 +103,11 @@
 
   export Example
   ```
-* **CSS**
-  * [Styled-cmp](https://styled-components.com/) library using for writing styles. [Work with TS](https://styled-components.com/docs/api#typescript)
-  * Styled component write on file `styles.ts`
-* **Redux**
-  * For connect your cmp to redux you must create separate file `Container.ts`. Template: 
+* **CSS**  
+  * [Styled-cmp](https://styled-components.com/) library using for writing styles. [Work with TS](https://styled-components.com/docs/api#typescript)  
+  * Styled component write on file `styles.ts`  
+* **Redux**  
+  * For connect your cmp to redux you must create separate file `Container.ts`. Template:  
     ```javascript
     import { connect } from 'react-redux'
 
@@ -122,7 +122,7 @@
     export default connect(mapStateToProps, mapDispatchToProps)(Component)
     ```
   * If you don\`t need `mapStateToProps` or `mapDispatchToProps` change to null in connect params
-  * For select some data from store you must use select function (See **Code separation -> selects** section).
+  * For select some data from store you must use select function (See **Code separation -> selects** section).  
     ```javascript
       // incorrect
       const mapStateToProps = (state: IRootState) => ({
