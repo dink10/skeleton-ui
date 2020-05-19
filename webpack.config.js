@@ -67,14 +67,14 @@ const config = {
           },
         }]
       },
-      // { test:/\.(woff|woff2|ttf|otf|eot)$/,
-      //   use: [{
-      //     loader: 'file-loader',
-      //     options: {
-      //       esModule: false,
-      //     },
-      //   }]
-      // }
+      { test:/\.(woff|woff2|ttf|otf|eot)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            esModule: false,
+          },
+        }]
+      }
     ],
   },
   optimization: {
