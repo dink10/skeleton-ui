@@ -3,6 +3,6 @@ import AuthApi from './AuthApi'
 
 const api = new ApiService()
 
-export const authApi = new AuthApi(api)
+export const authApi = new AuthApi()
 
 export default api

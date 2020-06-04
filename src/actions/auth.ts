@@ -29,7 +29,7 @@ export const fetchUser = (): any => async (dispatch: TAppDispatchThunk<IUser>): 
     return
   }
 
-  dispatch(setUser(response.body))
+  dispatch(setUser(response.data))
 }
 
 declare const gapi: any
@@ -47,10 +47,10 @@ export const loginAction = (): any => async (dispatch: TAppDispatchThunk<IUser>)
           scope: 'profile email',
           hd: 'gismart.com',
         })
-        const response = await authApi.login(code)
+        const response = await authApi.login({ code })
 
         if (response.success) {
-          dispatch(setUser(response.body))
+          dispatch(setUser(response.data))
           goTo('/')
         } else {
           goTo('/login')
@@ -66,7 +66,7 @@ export const loginAction = (): any => async (dispatch: TAppDispatchThunk<IUser>)
 export const logoutAction = (): any => async (dispatch: TAppDispatchThunk<never>): Promise<void> => {
   const response = await authApi.logout()
   if (!response.success) {
-    console.error(`LOGOUT FAILED: ${response.status}`)
+    console.error(`LOGOUT FAILED`)
 
     return
   }

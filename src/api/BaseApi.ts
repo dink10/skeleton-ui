@@ -4,6 +4,7 @@ import ApiService, {
 
 class BaseApi<T> {
   protected api: ApiService
+  protected basePath = '' // need if you have version prefix. fe v1/
   protected path = ''
 
   constructor(api: ApiService) {
@@ -16,7 +17,7 @@ class BaseApi<T> {
       body: entity as unknown as object,
     }
 
-    return this.api.makeRequest<T>(this.path, options)
+    return this.api.makeRequest<T>(this.buildFullPath(), options)
   }
 
   get(id: number, params: IRequestParams): Promise<IResponseResult<T>> {
@@ -25,7 +26,7 @@ class BaseApi<T> {
       params,
     }
 
-    return this.api.makeRequest<T>(`${this.path}/${id}`, options)
+    return this.api.makeRequest<T>(`${this.buildFullPath()}/${id}`, options)
   }
 
   // todo: make more clear type
@@ -35,25 +36,29 @@ class BaseApi<T> {
       params,
     }
 
-    return this.api.makeRequest<never>(`${this.path}/${id}`, options)
+    return this.api.makeRequest<never>(`${this.buildFullPath()}/${id}`, options)
   }
 
-  list(params: IRequestParams): Promise<IResponseResult<T[]>> {
+  list(params?: IRequestParams): Promise<IResponseResult<T>> {
     const options: IRequestOptions = {
       method: RequestMethod.Get,
       params,
     }
 
-    return this.api.makeRequest<T[]>(this.path, options)
+    return this.api.makeRequest<T>(this.buildFullPath(), options)
   }
 
-  update(id: number, entity: T): Promise<IResponseResult<T>> {
+  update(id: (number | string), entity: T): Promise<IResponseResult<T>> {
     const options: IRequestOptions = {
       method: RequestMethod.Put,
       body: entity as unknown as object,
     }
 
-    return this.api.makeRequest<T>(`${this.path}/${id}`, options)
+    return this.api.makeRequest<T>(`${this.buildFullPath()}/${id}`, options)
+  }
+
+  protected buildFullPath() {
+    return `${this.basePath}/${this.path}`
   }
 }
 

@@ -1,6 +1,10 @@
+import { goTo } from 'route-history'
+import { UNAUTHORIZED_STATUS } from 'root-constants'
+
 /**
  * API_PREFIX - declare in webpack.config.js as a global variable
  */
+
 declare const API_PREFIX: string
 
 export interface IRequestParams {
@@ -26,9 +30,18 @@ export enum RequestMethod {
 export interface IResponseResult<T> {
   success: boolean
   status?: number
-  body?: T
+  list?: T[]
+  entity?: T
 }
 
+export interface IResponseBody<T> {
+  list?: T[]
+  entity?: T
+  error?: string
+}
+
+// TODO: apply common response structure for success flow
+// TODO: apply common response structure for failed flow
 class ApiService {
   public async makeRequest<T>(url: string, options: IRequestOptions): Promise<IResponseResult<T>> {
     try {
@@ -86,16 +99,22 @@ class ApiService {
   }
 
   protected async processResponse<T>(response: Response): Promise<IResponseResult<T>> {
-    const result: T = await response.json()
+    const result: IResponseBody<T> = await response.json()
 
     return {
       success: true,
-      body: result,
       status: response.status,
+      // TODO: check latter
+      list: result.list || [],
+      entity: result.entity,
     }
   }
 
   protected processError<T>(error: any): Promise<IResponseResult<T>> {
+    if (error.status === UNAUTHORIZED_STATUS) {
+      goTo('/login')
+    }
+
     return Promise.resolve<IResponseResult<T>>({
       success: false,
       status: error.status,

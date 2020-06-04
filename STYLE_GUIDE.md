@@ -50,9 +50,9 @@
     import { NotFound } from 'pages'
     import { Cmp1, Cmp2 } from './components'
 
-    export interface IExampleProps {}
+    export interface IProps {}
 
-    const Example: React.FC<> = () => {
+    const Example: React.FC<IProps> = () => {
       const { url } = useRouteMatch()
 
       return (
@@ -94,10 +94,10 @@
   ```javascript
   import React from 'react'
 
-  export interface IExampleProps {
+  export interface IProps {
   }
 
-  const Example: React.FC<IExampleProps> = ({}) => {
+  const Example: React.FC<IProps> = ({}) => {
 
   }
 

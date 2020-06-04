@@ -1,5 +1,7 @@
 import IPermission, { TAction } from 'models/permission.model'
 
+const NUMBER_OF_AVAILABLE_ACTIONS = 4
+
 export function isResourceAvailable(reqResource: string, permissions: IPermission[] = [], action: TAction): boolean {
   const deniedPolicy = permissions.find(({ resource }) => resource === reqResource)
 
@@ -7,7 +9,7 @@ export function isResourceAvailable(reqResource: string, permissions: IPermissio
     return true
   }
 
-  if (deniedPolicy.actions && deniedPolicy.actions[0] === '*') {
+  if (deniedPolicy.actions && deniedPolicy.actions.length === NUMBER_OF_AVAILABLE_ACTIONS) {
     return false
   }
 
@@ -34,7 +36,7 @@ export function getPermissions(reqResource: string, permissions: IPermission[] =
       permissons, allow: true,
     }
   }
-  if (deniedPolicy.actions && deniedPolicy.actions[0] === '*') {
+  if (deniedPolicy.actions && deniedPolicy.actions.length === NUMBER_OF_AVAILABLE_ACTIONS) {
     return { allow: false }
   }
 

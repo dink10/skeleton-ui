@@ -4,15 +4,15 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: dev-skeleton-ui
-  name: dev-skeleton-ui
+    io.kompose.service: skeleton-ui
+  name: skeleton-ui
 spec:
   replicas: 1
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: dev-skeleton-ui
+        io.kompose.service: skeleton-ui
     spec:
       containers:
       - name: app
@@ -21,18 +21,23 @@ spec:
           - name: GOOGLE_LOGIN_CLIENT_ID
             valueFrom:
               secretKeyRef:
-                name: google-secrets
+                name: env-secrets
                 key: GOOGLE_LOGIN_CLIENT_ID
           - name: API_URL
             valueFrom:
               configMapKeyRef:
                 name: env-configmap
                 key: API_URL
+          - name: STATS_URL
+            valueFrom:
+              configMapKeyRef:
+                name: env-configmap
+                key: STATS_URL
         envFrom:
           - configMapRef:
               name: stats-configmap
         ports:
-          - containerPort: 8080
+          - containerPort: 80
         resources:
           requests:
             cpu: 25m

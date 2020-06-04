@@ -1,36 +1,58 @@
-import { IResponseResult, IRequestOptions, RequestMethod } from 'services/api.service'
+// TODO: make it more clear
+import { IRequestOptions, RequestMethod } from 'services/api.service'
 import IUser from 'models/user.model'
 
-import BaseApi from './BaseApi'
+interface IAuthResponseResult<T> {
+  success: boolean
+  data?: T
+}
+class AuthApi {
+  loginPath ='/auth/login'
+  mePath ='/auth/me'
+  logoutPath ='/auth/logout'
 
-class AuthApi extends BaseApi<IUser> {
-  loginPath ='auth/login'
-  mePath ='auth/me'
-  logoutPath ='auth/logout'
-
-  me(): Promise<IResponseResult<IUser>> {
+  me(): Promise<IAuthResponseResult<IUser>> {
     const options: IRequestOptions = {
       method: RequestMethod.Get,
     }
 
-    return this.api.makeRequest<IUser>(this.mePath, options)
+    return this.makeRequest<IUser>(this.mePath, options)
   }
 
-  login(entity: { code: string }): Promise<IResponseResult<IUser>> {
+  login(entity: { code: string }): Promise<IAuthResponseResult<IUser>> {
     const options: IRequestOptions = {
       method: RequestMethod.Post,
       body: entity as unknown as object,
     }
 
-    return this.api.makeRequest<IUser>(this.loginPath, options)
+    return this.makeRequest<IUser>(this.loginPath, options)
   }
 
-  logout(): Promise<IResponseResult<never>> {
+  logout(): Promise<IAuthResponseResult<never>> {
     const options: IRequestOptions = {
       method: RequestMethod.Post,
     }
 
-    return this.api.makeRequest<never>(this.logoutPath, options)
+    return this.makeRequest<never>(this.logoutPath, options)
+  }
+
+  private async makeRequest<T>(url: string, options: IRequestOptions): Promise<IAuthResponseResult<T>> {
+    try {
+      const res = await fetch(`/api/${url}`, {
+        method: options.method,
+        body: options.body && JSON.stringify(options.body),
+      })
+
+      return {
+        success: res.ok,
+        data: res.ok ? (await res.json() as T) : undefined,
+      }
+    } catch (error) {
+      console.error(error)
+      return {
+        success: false,
+      }
+    }
   }
 }
 

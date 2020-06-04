@@ -4,6 +4,11 @@ import logger from 'redux-logger'
 import { routerMiddleware } from 'connected-react-router'
 import routeHistory from 'route-history'
 
-const enhancer = applyMiddleware(thunk, logger, routerMiddleware(routeHistory))
+const middleware = [thunk, routerMiddleware(routeHistory)]
+
+if (process.env.NODE_ENV === 'development') {
+  middleware.push(logger)
+}
+const enhancer = applyMiddleware(...middleware)
 
 export default enhancer

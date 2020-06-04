@@ -57,6 +57,7 @@ Description area. Write few words what project do
 - NPM_AUTH                  - Auth token for [Gismart npm](https://npm.gismart.xyz)
 - GOOGLE_LOGIN_CLIENT_ID    - Google client id (required for authorization through google)
 - API_URL                   - URL of Back-end server
+- STATS_URL                 - URL of kafka proxy api
   
 ## Dependencies
 For installing you should have next tools:
