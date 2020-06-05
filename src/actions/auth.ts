@@ -12,19 +12,22 @@ export const LOGIN = `${MODULE_NAME}/LOGIN`
 export const LOGOUT = `${MODULE_NAME}/LOGOUT`
 
 // actions handlers
-function setUser(user) {
+function setUser(user: IUser) {
   // eslint-disable-next-line no-new
   new CustomAnalytics(user.email)
   return ({
     type: SET_USER,
-    payload: user,
+    payload: {
+      ...user,
+      permissions: user.permissions.filter(({ effect }) => effect === 'deny'),
+    },
   })
 }
 
 export const fetchUser = (): any => async (dispatch: TAppDispatchThunk<IUser>): Promise<void> => {
   const response = await authApi.me()
 
-  if (!response.success) {
+  if (!response.success || !response.data) {
     goTo('/login')
     return
   }
@@ -45,11 +48,10 @@ export const loginAction = (): any => async (dispatch: TAppDispatchThunk<IUser>)
         const auth2 = await gapi.auth2.getAuthInstance()
         const { code } = await auth2.grantOfflineAccess({
           scope: 'profile email',
-          hd: 'gismart.com',
         })
         const response = await authApi.login({ code })
 
-        if (response.success) {
+        if (response.success && response.data) {
           dispatch(setUser(response.data))
           goTo('/')
         } else {
