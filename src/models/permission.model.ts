@@ -1,5 +1,5 @@
 
-export type TAction = 'C' | 'R' | 'U' | 'D' | '*'
+export type TAction = 'C' | 'R' | 'U' | 'D'
 export type TEffect = 'allow' | 'deny'
 
 export default interface IPermission {

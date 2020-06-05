@@ -1,9 +1,10 @@
 import IPermission, { TAction } from 'models/permission.model'
+import { ACTIONS } from 'root-constants'
 
 const NUMBER_OF_AVAILABLE_ACTIONS = 4
 
-export function isResourceAvailable(reqResource: string, permissions: IPermission[] = [], action: TAction): boolean {
-  const deniedPolicy = permissions.find(({ resource }) => resource === reqResource)
+export function isResourceAvailable(reqResource: string, deniedResources: IPermission[] = [], action: TAction): boolean {
+  const deniedPolicy = deniedResources.find(({ resource }) => resource === reqResource)
 
   if (!deniedPolicy) {
     return true
@@ -16,8 +17,8 @@ export function isResourceAvailable(reqResource: string, permissions: IPermissio
   return !deniedPolicy.actions.includes(action)
 }
 
-export function getPermissions(reqResource: string, permissions: IPermission[] = []) {
-  const permissons = {
+export function getPermissions(reqResource: string, deniedResources: IPermission[] = []) {
+  const permissions = {
     isEditable: true,
     isReadable: true,
     isDeletable: true,
@@ -26,14 +27,14 @@ export function getPermissions(reqResource: string, permissions: IPermission[] =
 
   if (!reqResource || !permissions) {
     return {
-      permissons, allow: true,
+      permissions, allow: true,
     }
   }
 
-  const deniedPolicy = permissions.find(({ resource }) => resource === reqResource)
+  const deniedPolicy = deniedResources.find(({ resource }) => resource === reqResource)
   if (!deniedPolicy) {
     return {
-      permissons, allow: true,
+      permissions, allow: true,
     }
   }
   if (deniedPolicy.actions && deniedPolicy.actions.length === NUMBER_OF_AVAILABLE_ACTIONS) {
@@ -41,11 +42,11 @@ export function getPermissions(reqResource: string, permissions: IPermission[] =
   }
 
   return {
-    permissons: {
-      isEditable: !deniedPolicy.actions.includes('U'),
-      isReadable: !deniedPolicy.actions.includes('R'),
-      isDeletable: !deniedPolicy.actions.includes('D'),
-      isCreatable: !deniedPolicy.actions.includes('C'),
+    permissions: {
+      isEditable: !deniedPolicy.actions.includes(ACTIONS.update),
+      isReadable: !deniedPolicy.actions.includes(ACTIONS.read),
+      isDeletable: !deniedPolicy.actions.includes(ACTIONS.delete),
+      isCreatable: !deniedPolicy.actions.includes(ACTIONS.create),
     },
     allow: true,
   }

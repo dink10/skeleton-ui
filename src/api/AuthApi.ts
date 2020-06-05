@@ -1,19 +1,21 @@
 // TODO: make it more clear
 import { IRequestOptions, RequestMethod } from 'services/api.service'
 import IUser from 'models/user.model'
+import { RESOURCES } from 'root-constants'
 
 interface IAuthResponseResult<T> {
   success: boolean
   data?: T
 }
 class AuthApi {
-  loginPath ='/auth/login'
-  mePath ='/auth/me'
-  logoutPath ='/auth/logout'
+  loginPath ='v1/auth/login'
+  mePath ='v1/auth/me'
+  logoutPath ='v1/auth/logout'
 
   me(): Promise<IAuthResponseResult<IUser>> {
     const options: IRequestOptions = {
-      method: RequestMethod.Get,
+      method: RequestMethod.Post,
+      body: { resources: Object.values(RESOURCES) },
     }
 
     return this.makeRequest<IUser>(this.mePath, options)
@@ -22,7 +24,10 @@ class AuthApi {
   login(entity: { code: string }): Promise<IAuthResponseResult<IUser>> {
     const options: IRequestOptions = {
       method: RequestMethod.Post,
-      body: entity as unknown as object,
+      body: {
+        ...entity,
+        resources: Object.values(RESOURCES),
+      },
     }
 
     return this.makeRequest<IUser>(this.loginPath, options)
