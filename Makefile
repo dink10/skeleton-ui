@@ -1,4 +1,4 @@
-VERSION=`git describe --abbrev=7 --always --tags`
+VERSION="`git describe --abbrev=7 --always --tags`-${BUILD_NUMBER}"
 
 default: build
 
